@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Hoteles</title>
+	</head>
+	<body>
+		{% if portada %}
+			<table border="2">
+				<tr>
+					<td>nombre</td>
+					<td>lugar</td>
+					<td>direccion</td>
+					<td>telefono</td>
+					<td>fecha</td>
+				</tr>
+				{% for pagina in portada %}
+					<tr>
+						<td>{{ pagina.nombre }}</td>
+						<td>{{ pagina.fecha }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>hoooteeeel</p>			
+		{% endif %}
+	</body>
+</html>
