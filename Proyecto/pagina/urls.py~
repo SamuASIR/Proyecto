@@ -2,5 +2,6 @@ from django.conf.urls import url
 from pagina import views
 
 urlpatterns = [
-   url(r'^$', views.indice, name='portada'),
+   url(r'^$', views.indice, name='indice'),
+	url(r'^$', views.registro, name='registro'),
 ]
