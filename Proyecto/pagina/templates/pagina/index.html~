@@ -4,8 +4,8 @@
 	</head>
 	<body>
 			{% if user.is_authenticated %}
-			<p>Soy {{ user.get_username }}</p>
-		{% endif %}
+				<p>Soy {{ user.get_username }}</p>
+			{% endif %}
 		<nav>
 			<ul>
 				{% if user.is_authenticated %}	
@@ -24,6 +24,7 @@
 					<td>direccion</td>
 					<td>telefono</td>
 					<td>web</td>
+					<td></td>
 				</tr>
 				{% for pagina in portada %}
 					<tr>
@@ -32,6 +33,7 @@
 						<td>{{ pagina.direccion }}</td>
 						<td>{{ pagina.telefono }}</td>
 						<td><a href="{{pagina.web}}">web</a></td>
+						<td><img src="{{pagina.foto}}"></td>
 					</tr>
 				{% endfor %}
 			</table>

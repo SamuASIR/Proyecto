@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def indice(request):
-   portada = hotel.objects.all()
-   return render(request, 'pagina/index.html', {'portada': portada })
+	portada = hotel.objects.all()
+	return render(request, 'pagina/index.html', {'portada': portada })
 
 def registro(request):
 	if request.method == 'POST':
@@ -37,5 +37,3 @@ def loginpage(request):
 def logoutpage(request):
 	logout(request)
 	return HttpResponseRedirect("/")
-
-

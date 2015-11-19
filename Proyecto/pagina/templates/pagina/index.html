@@ -24,6 +24,7 @@
 					<td>direccion</td>
 					<td>telefono</td>
 					<td>web</td>
+					<td>foto</td>
 				</tr>
 				{% for pagina in portada %}
 					<tr>
@@ -32,6 +33,7 @@
 						<td>{{ pagina.direccion }}</td>
 						<td>{{ pagina.telefono }}</td>
 						<td><a href="{{pagina.web}}">web</a></td>
+						<td><img src="{{pagina.foto}}"></td>
 					</tr>
 				{% endfor %}
 			</table>
