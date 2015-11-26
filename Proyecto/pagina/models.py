@@ -17,8 +17,8 @@ class hotel(models.Model):
 class reserva(models.Model):
 	fecha_entrada = models.DateTimeField()
 	fecha_salida = models.DateTimeField()
-	n_habitacion = models.CharField(max_length=50)
-	id_reserva = models.CharField(max_length=50)
+	hotel = models.ForeignKey(hotel, default=1)
+	User =  models.ForeignKey(User, default=1)
 
 	def __str__(self):
 		return '%s' % (self.nombre)
@@ -44,7 +44,7 @@ class usuario(models.Model):
 		return '%s' % (self.nombre)
 
 class comentario(models.Model):
-	usuario = models.ForeignKey(usuario)
+	usuario = models.ForeignKey(User)
 	opinion = models.TextField()
 
 	def __str__(self):

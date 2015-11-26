@@ -3,6 +3,7 @@ from pagina.models import hotel
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -37,3 +38,15 @@ def loginpage(request):
 def logoutpage(request):
 	logout(request)
 	return HttpResponseRedirect("/")
+
+@login_required
+def reservahotel(request):
+	if request.method == "POST":
+		form = hotelForm(request.POST, request.FILES)
+		if form.is_valid():
+			receta = form.save()
+			receta.save()
+			return HttpResponseRedirect("/")
+	else:
+		form = hotelForm()
+	return render(request, 'pagina/reserva_hotel.html', {'form': form})

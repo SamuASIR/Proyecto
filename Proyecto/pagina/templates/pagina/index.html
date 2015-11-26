@@ -25,15 +25,22 @@
 					<td>telefono</td>
 					<td>web</td>
 					<td>foto</td>
+				{% if user.is_authenticated %}
+					<td>Reserva</td>
+				{% endif %}
+
 				</tr>
-				{% for pagina in portada %}
+				{% for hotel in portada %}
 					<tr>
-						<td>{{ pagina.nombre }}</td>
-						<td>{{ pagina.lugar }}</td>
-						<td>{{ pagina.direccion }}</td>
-						<td>{{ pagina.telefono }}</td>
-						<td><a href="{{pagina.web}}">web</a></td>
-						<td><img src="{{pagina.foto}}"></td>
+						<td>{{ hotel.nombre }}</td>
+						<td>{{ hotel.lugar }}</td>
+						<td>{{ hotel.direccion }}</td>
+						<td>{{ hotel.telefono }}</td>
+						<td><a href="{{hotel.web}}">web</a></td>
+						<td><img src="{{hotel.foto}}"></td>
+						{% if user.is_authenticated %}
+						<td><a href="{% url 'reservahotel'  %}">Reserva</a</td>
+						{% endif %}
 					</tr>
 				{% endfor %}
 			</table>
