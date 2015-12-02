@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from pagina.forms import hotelForm
 
 # Create your views here.
 

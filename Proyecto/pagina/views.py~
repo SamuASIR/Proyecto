@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.form import hotelForm
 
 # Create your views here.
 
@@ -48,5 +49,5 @@ def reservahotel(request):
 			receta.save()
 			return HttpResponseRedirect("/")
 	else:
-		form = RecetaForm()
+		form = hotelForm()
 	return render(request, 'pagina/reserva_hotel.html', {'form': form})
