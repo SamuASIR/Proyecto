@@ -4,8 +4,9 @@
 	</head>
 	<body>
 		<h1>Reserva Hotel</h1>
-			{{ form.as_p }}
-			<button type="submit">Guardar</button>
+		<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit">Guardar</button>
 		</form>
 		<a href="{% url 'indice' %}">Volver</a>			
 	</body>

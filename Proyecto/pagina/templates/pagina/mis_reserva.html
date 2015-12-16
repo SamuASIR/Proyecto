@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Mis reservas</title>
+	</head>
+	<body>
+		<h1>Mis reservas</h1>
+			<table border="2">
+				<tr>
+					<td>Hotel</td>
+					<td>Fecha entrada</td>
+					<td>Fecha salida</td>
+				</tr>
+		{% for reserva in listareservas %}
+			<tr>
+				<td>{{ reserva.hotel }}</td>
+				<td>{{ reserva.fecha_entrada }}</td>
+				<td>{{ reserva.fecha_salida }}</td>
+					
+				</tr>
+
+		{% endfor %}
+		
+		<a href="{% url 'indice' %}">Volver</a>			
+	</body>
+</html>

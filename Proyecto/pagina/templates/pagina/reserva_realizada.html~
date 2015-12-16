@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Reserva realizada</title>
+	</head>
+	<body>
+		<h1>Reserva realizada</h1>
+		Su reserva fue realizada y finalizada.
+		<br>
+		<a href="{% url 'indice' %}">Volver</a>			
+	</body>
+</html>

@@ -10,6 +10,7 @@
 			<ul>
 				{% if user.is_authenticated %}	
 					<li><a href="{% url 'logout' %}">Logout</a></li>
+					<li><a href="{% url 'mis_reservas' %}">Mis reservas</a></li>
 				{% else %}
 					<li><a href="{% url 'registro' %}">Registro</a></li>
 					<li><a href="{% url 'login' %}">Login</a></li>
@@ -30,16 +31,16 @@
 				{% endif %}
 
 				</tr>
-				{% for pagina in portada %}
+				{% for hotel in portada %}
 					<tr>
-						<td>{{ pagina.nombre }}</td>
-						<td>{{ pagina.lugar }}</td>
-						<td>{{ pagina.direccion }}</td>
-						<td>{{ pagina.telefono }}</td>
-						<td><a href="{{pagina.web}}">web</a></td>
-						<td><img src="{{pagina.foto}}"></td>
+						<td>{{ hotel.nombre }}</td>
+						<td>{{ hotel.lugar }}</td>
+						<td>{{ hotel.direccion }}</td>
+						<td>{{ hotel.telefono }}</td>
+						<td><a href="{{hotel.web}}">web</a></td>
+						<td><img src="{{hotel.foto}}"></td>
 						{% if user.is_authenticated %}
-						<td><a href="{% url 'reservahotel' %}">Reserva</a</td>
+						<td><a href="{% url 'reservahotel'  %}">Reserva</a</td>
 						{% endif %}
 					</tr>
 				{% endfor %}

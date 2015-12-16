@@ -17,7 +17,7 @@ class hotel(models.Model):
 class reserva(models.Model):
 	fecha_entrada = models.DateTimeField()
 	fecha_salida = models.DateTimeField()
-	hotel = models.ForeignKey(hotel, default=1)
+	hotel = models.ForeignKey(hotel,default=1)
 	User =  models.ForeignKey(User, default=1)
 
 	def __str__(self):

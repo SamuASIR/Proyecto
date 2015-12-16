@@ -1,12 +1,13 @@
-from django.shortcuts import render
-from pagina.models import hotel
+from django.shortcuts import render,get_object_or_404,
+from pagina.models import hotel,reserva
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.form import hotelForm
+from pagina.forms import hotelForm
 
 # Create your views here.
+# def Hace referencia a un html
 
 def indice(request):
 	portada = hotel.objects.all()
@@ -41,13 +42,26 @@ def logoutpage(request):
 	return HttpResponseRedirect("/")
 
 @login_required
-def reservahotel(request):
+def reservahotel(request,hotel_id):
 	if request.method == "POST":
 		form = hotelForm(request.POST, request.FILES)
 		if form.is_valid():
-			receta = form.save()
-			receta.save()
-			return HttpResponseRedirect("/")
+			reserva = form.save()
+			reserva.User = request.user
+			reserva.hotel = get_object_or_404(hotel, pk = hotel_id)			
+			reserva.save()
+			return HttpResponseRedirect("/reserva_realizada")
 	else:
 		form = hotelForm()
 	return render(request, 'pagina/reserva_hotel.html', {'form': form})
+
+def reserva_realizada(request):
+	portada = hotel.objects.all()
+	return render(request, 'pagina/reserva_realizada.html', {'portada': portada })
+
+@login_required
+def mis_reservas(request):
+	listareservas = reserva.objects.filter(User = request.user) #Funciona como un where
+	return render(request, 'pagina/mis_reserva.html', {'listareservas': listareservas }) #variable
+	
+	
