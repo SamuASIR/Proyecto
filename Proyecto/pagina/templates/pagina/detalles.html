@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Detalles</title>
+	</head>
+	<body>
+		<h1>Detalles</h1>
+			<img src="/{{detalles_hotel.foto}}"><br>
+		<h1>Descripcion</h1>
+			{{detalles_hotel.descripcion}}<br><br>
+			<table border="2">
+				<tr>
+					<td>Opinion</td>
+					<td>Usuario</td>
+				</tr>
+		{% for comentarios in lista_comentarios %}
+				<tr>
+					<td>{{comentarios.opinion}}</td>
+					<td>{{comentarios.usuario}}</td>
+				</tr>
+		{% endfor %}
+			</table>
+		<form method="POST"> {% csrf_token %}
+				{{ form.as_p }}
+		<button type="submit">Guardar</button>
+		<a href="{% url 'indice' %}">Volver</a>			
+	</body>
+</html>

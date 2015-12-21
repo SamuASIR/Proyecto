@@ -10,6 +10,7 @@ class hotel(models.Model):
 	telefono = models.CharField(max_length=9)
 	web = models.URLField(max_length=100,null=True)
 	foto = models.ImageField(upload_to='pagina/static/media',null=True)
+	descripcion = models.TextField(null=True)
 
 	def __str__(self):
 		return '%s' % (self.nombre)
@@ -17,7 +18,7 @@ class hotel(models.Model):
 class reserva(models.Model):
 	fecha_entrada = models.DateTimeField()
 	fecha_salida = models.DateTimeField()
-	hotel = models.ForeignKey(hotel)
+	hotel = models.ForeignKey(hotel,default=1)
 	User =  models.ForeignKey(User, default=1)
 
 	def __str__(self):
@@ -46,6 +47,7 @@ class usuario(models.Model):
 class comentario(models.Model):
 	usuario = models.ForeignKey(User)
 	opinion = models.TextField()
+	hotel = models.ForeignKey(hotel,default=1)
 
 	def __str__(self):
 		return '%s' % (self.nombre)

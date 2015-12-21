@@ -1,10 +1,15 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title>Hoteles</title>
+		<h1 id=cabecera>Hoteles en Aller</h1>
+		<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
 	</head>
 	<body>
+		<div id=menu>
+			<h3>Menu</h3>
 			{% if user.is_authenticated %}
-				<p>Soy {{ user.get_username }}</p>
+				<p id=login>Soy {{ user.get_username }}</p>
 			{% endif %}
 		<nav>
 			<ul>
@@ -17,15 +22,15 @@
 				{% endif %}
 			</ul>
 		</nav>
+		</div>
 		{% if portada %}
-			<table border="2">
+			<table class=tabla border="2">
 				<tr>
-					<td>nombre</td>
-					<td>lugar</td>
-					<td>direccion</td>
-					<td>telefono</td>
-					<td>web</td>
-					<td>foto</td>
+					<td>Nombre</td>
+					<td>Lugar</td>
+					<td>Direccion</td>
+					<td>Telefono</td>
+					<td>Web</td>
 				{% if user.is_authenticated %}
 					<td>Reserva</td>
 				{% endif %}
@@ -33,12 +38,11 @@
 				</tr>
 				{% for hotel in portada %}
 					<tr>
-						<td>{{ hotel.nombre }}</td>
+						<td><a href="{% url 'detalles' hotel.id %}">{{ hotel.nombre }}</a></td>
 						<td>{{ hotel.lugar }}</td>
 						<td>{{ hotel.direccion }}</td>
 						<td>{{ hotel.telefono }}</td>
 						<td><a href="{{hotel.web}}">web</a></td>
-						<td><img src="{{hotel.foto}}"></td>
 						{% if user.is_authenticated %}
 						<td><a href="{% url 'reservahotel' hotel.id %}">Reserva</a</td>
 						{% endif %}

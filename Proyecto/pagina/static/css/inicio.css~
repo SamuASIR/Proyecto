@@ -1,0 +1,6 @@
+html {
+
+	background-image: url("/pagina/static/media/hojas3.jpg");
+	background-size: cover;
+
+}

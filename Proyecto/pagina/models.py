@@ -10,6 +10,7 @@ class hotel(models.Model):
 	telefono = models.CharField(max_length=9)
 	web = models.URLField(max_length=100,null=True)
 	foto = models.ImageField(upload_to='pagina/static/media',null=True)
+	descripcion = models.TextField(null=True)
 
 	def __str__(self):
 		return '%s' % (self.nombre)
@@ -44,8 +45,9 @@ class usuario(models.Model):
 		return '%s' % (self.nombre)
 
 class comentario(models.Model):
-	usuario = models.ForeignKey(User)
+	usuario = models.ForeignKey(User,null=True)
 	opinion = models.TextField()
+	hotel = models.ForeignKey(hotel,default=1)
 
 	def __str__(self):
 		return '%s' % (self.nombre)
